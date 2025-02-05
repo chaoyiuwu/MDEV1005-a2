@@ -1,12 +1,12 @@
-import { Route, Routes } from 'react-router'
 import './App.css'
-import Dashboard from './pages/Dashboard/dashboard'
+import { Link } from 'react-router'
 
 function App() {
-    return (
-        <Routes>
-            <Route index element={<Dashboard />} />
-        </Routes>
+    return ( 
+        <div>
+            <p><Link to="/login">Have An Account? Log In Here</Link></p>
+            <p><Link to="/signup">No Accounts? Sign Up Here</Link></p>
+        </div>
     )
 }
 

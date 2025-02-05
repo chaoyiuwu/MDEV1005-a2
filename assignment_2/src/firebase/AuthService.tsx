@@ -1,4 +1,3 @@
-//imports
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { firebaseAuth } from './BaseConfig';
 import { LoginFormValues, UserFormValues } from '../interfaces/interface';
@@ -14,11 +13,11 @@ export const firebaseSignIn = async ({ email, password }: LoginFormValues) => {
 
 //Sign up functionality
 export const firebaseSignUp = async ({ email, password }: UserFormValues) => {
-    const  result = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    const result = await createUserWithEmailAndPassword(firebaseAuth, email, password);
     return result;
 };
 
 //Sign out functionality
 export const firebaseSignOut = async () => {
-    await  signOut(firebaseAuth);
+    await signOut(firebaseAuth);
 };

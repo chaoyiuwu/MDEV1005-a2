@@ -11,12 +11,6 @@ export interface UserFormValues {
     displayName: string;
 }
 
-export interface AuthUser {
-    email: string | null;
-    displayName: string | null;
-    uid: string | null;
-}
-
 export interface AuthContextType {
     user: User | null;
     setUser: (user: User | null) => void;
