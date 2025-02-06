@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Fieldset, Field, Input, Label, Legend } from '@headlessui/react'
 import { useNavigate } from 'react-router';
-import { firebaseSignIn } from '../../firebase/AuthService';
+import { firebaseSignIn } from '../../firebase/FirebaseService';
 
 const Login = () => {
     const navigate = useNavigate();
