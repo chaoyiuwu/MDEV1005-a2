@@ -7,6 +7,7 @@ import Login from './pages/Login/login'
 import SignUp from './pages/SignUp/signup'
 import Landing from './pages/Landing/landing.tsx'
 import { MantineProvider } from '@mantine/core'
+import NotFound from './pages/NotFound/notFound.tsx'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                                 <Dashboard />
                             </PrivateRoute>
                         }/>
+                        <Route path="/*" element={<NotFound />}/>
                     </Routes>
                 </BrowserRouter>
             </AuthProvider>
