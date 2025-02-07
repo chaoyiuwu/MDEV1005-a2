@@ -53,10 +53,10 @@ const Dashboard = () => {
                             Content 1
                             </TabPanel>
                         <TabPanel className="rounded-xl bg-white/5 p-3">
-                            <p style={{ textAlign: 'left' }}>Name: {currentUser?.displayName}</p>
-                            <p style={{ textAlign: 'left' }}>Email: {currentUser?.email}</p>
-                            <p style={{ textAlign: 'left' }}>Created At: {currentUser?.metadata.creationTime}</p>
-                            <p style={{ textAlign: 'left' }}>Last Signed In: {currentUser?.metadata.lastSignInTime}</p>
+                            <p className='text-sm/6' style={{ textAlign: 'left' }}>Name: {currentUser?.displayName}</p>
+                            <p className='text-sm/6' style={{ textAlign: 'left' }}>Email: {currentUser?.email}</p>
+                            <p className='text-sm/6' style={{ textAlign: 'left' }}>Created At: {currentUser?.metadata.creationTime}</p>
+                            <p className='text-sm/6' style={{ textAlign: 'left' }}>Last Signed In: {currentUser?.metadata.lastSignInTime}</p>
                         </TabPanel>
                         <TabPanel className="rounded-xl bg-white/5 p-3">
                             <ul className="gap-2 text-white/50">
