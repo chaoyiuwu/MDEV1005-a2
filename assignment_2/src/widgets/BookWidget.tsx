@@ -10,10 +10,6 @@ interface BookData {
     first_publish_year: string,
 }
 
-const openLibraryCoverId = 'https://covers.openlibrary.org/b/id/'
-const openLibraryCoverOlid = 'https://covers.openlibrary.org/b/olid/'
-const mediumJPG = '-M.jpg'
-
 const readAuthorNames = (names: string[]): string[] => {
     let readNames: string[] = []
     names.forEach((name)=> {
@@ -69,7 +65,7 @@ function BookWidget() {
                                     <Card shadow="sm" padding="lg" radius="md" withBorder>
                                         <Card.Section>
                                             <Image
-                                            src={book.cover_i != '' ? `${openLibraryCoverId}${book.cover_i}${mediumJPG}` : null}
+                                            src={book.cover_i != '' ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null}
                                             fallbackSrc='https://placehold.co/600x400?text=Placeholder'
                                             />
                                         </Card.Section>

@@ -6,30 +6,12 @@ import PrivateRoute from './route/PrivateRoute'
 import Login from './pages/Login/login'
 import SignUp from './pages/SignUp/signup'
 import Landing from './pages/Landing/landing.tsx'
-import { MantineProvider,MantineColorsTuple,createTheme } from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
 
-const magentaColorScheme: MantineColorsTuple = [
-  '#ffe9f6',
-  '#ffd1e6',
-  '#faa1c9',
-  '#f66eab',
-  '#f24391',
-  '#f02981',
-  '#f01879',
-  '#d60867',
-  '#c0005c',
-  '#a9004f'
-];
-
-const theme = createTheme({
-  colors: {
-    magentaColorScheme,
-  }
-});
 
 function App() {
     return ( 
-        <MantineProvider theme={theme}>
+        <MantineProvider>
         <AuthProvider>
                 <BrowserRouter>
                     <Routes>
