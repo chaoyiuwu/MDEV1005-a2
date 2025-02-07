@@ -62,28 +62,30 @@ function BookWidget() {
             <Button className='my-2' color='green' variant='subtle' onClick={() => fetchBooks()}>Search</Button>
             {books.length > 0 && (<Button className='my-2' color='green' variant='subtle' onClick={toggle}>Toggle Search Result</Button>)}
             <Collapse in={opened}>
-                <Grid>
-                    {books.map((book: BookData, index) => (
-                        <Grid.Col key={index} span={6}>
-                            <Card shadow="sm" padding="lg" radius="md" withBorder>
-                                <Card.Section>
-                                    <Image
-                                    src={book.cover_i != '' ? `${openLibraryCoverId}${book.cover_i}${mediumJPG}` : null}
-                                    fallbackSrc='https://placehold.co/600x400?text=Placeholder'
-                                    />
-                                </Card.Section>
-                                <Text fw={500}>{book.title}</Text>                           
-                                <Text size="sm" c="dimmed">
-                                    author(s): {book.author_name.join(' | ')}
-                                </Text>
-                                <Text size="sm" c="dimmed">
-                                    First Published: {book.first_publish_year}
-                                </Text>
-                                <a href={'https://openlibrary.org'+book.key} target="_blank"><Button color="blue" fullWidth mt="md" size="xs" variant='subtle'>Open Library Entry</Button></a>
-                            </Card>  
-                        </Grid.Col>
-                    ))}
-                </Grid>
+
+                        <Grid>
+                            {books.map((book: BookData, index) => (
+                                <Grid.Col key={index} span={{base:6, sm:3}}>
+                                    <Card shadow="sm" padding="lg" radius="md" withBorder>
+                                        <Card.Section>
+                                            <Image
+                                            src={book.cover_i != '' ? `${openLibraryCoverId}${book.cover_i}${mediumJPG}` : null}
+                                            fallbackSrc='https://placehold.co/600x400?text=Placeholder'
+                                            />
+                                        </Card.Section>
+                                        <Text fw={500}>{book.title}</Text>                           
+                                        <Text size="sm" c="dimmed">
+                                            author(s): {book.author_name.join(' | ')}
+                                        </Text>
+                                        <Text size="sm" c="dimmed">
+                                            First Published: {book.first_publish_year}
+                                        </Text>
+                                        <a href={'https://openlibrary.org'+book.key} target="_blank"><Button color="blue" fullWidth mt="md" size="xs" variant='subtle'>Open Library Entry</Button></a>
+                                    </Card>  
+                                </Grid.Col>
+                            ))}
+                            </Grid>
+                    
             </Collapse>
 
         </div>

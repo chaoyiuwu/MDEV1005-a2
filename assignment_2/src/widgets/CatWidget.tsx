@@ -25,14 +25,11 @@ const CatWidget = () => {
     return(
         <div className='flex flex-col items-center'>
             <p className="text-base/7 font-semibold my-2">API 1: A Random Cat Photo</p>
-            <Image
-            radius='md'
-            h='auto'
-            fit='contain'
-            src={imageURL} alt='a random cat photo fetched from thecatapi'
-            fallbackSrc='https://placehold.co/600x400?text=Placeholder'/>
-            <Button 
-            className='my-2' color='green' variant='subtle' onClick={refreshImage}>Get Another Cat Photo!</Button>
+            <div className='w-full md:w-md'>
+                <Image radius='md' src={imageURL} alt='a random cat photo fetched from thecatapi'
+                fallbackSrc='https://placehold.co/600x400?text=Placeholder'/>
+            </div>
+            <Button className='my-2' color='green' variant='subtle' onClick={refreshImage}>Get Another Cat Photo!</Button>
         </div>
     )
 }

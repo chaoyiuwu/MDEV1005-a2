@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Button, Group, Stack, Tabs } from '@mantine/core'
+import { Button, Grid, GridCol, Group, Stack, Tabs, Text, List } from '@mantine/core'
 import { User } from 'firebase/auth'
 import { firebaseSignOut, firebaseGetAllUsers } from '../../firebase/FirebaseService'
 import { useAuth } from '../../contexts/useAuth'
@@ -37,10 +37,9 @@ const Dashboard = () => {
     },  [])
 
     return (
-        <div className='flex h-screen w-full'>
-            <div className='w-full max-w-md'>
+        <div className='flex h-screen flex-col w-full'>
                 <Tabs color='red' defaultValue='userProfile'>
-                    <Tabs.List>
+                    <Tabs.List justify='center'>
                         <Tabs.Tab value='widgets'>Widgets</Tabs.Tab>
                         <Tabs.Tab value='userProfile'>User Profile</Tabs.Tab>
                         <Tabs.Tab value='allUsers'>All Users</Tabs.Tab>
@@ -53,29 +52,31 @@ const Dashboard = () => {
                         </Stack>
                     </Tabs.Panel>
                     <Tabs.Panel value='userProfile'>
-                        <div className='mx-6 my-4'>
-                        <p className='text-sm/6' style={{ textAlign: 'left' }}>Name: {currentUser?.displayName}</p>
-                        <p className='text-sm/6' style={{ textAlign: 'left' }}>Email: {currentUser?.email}</p>
-                        <p className='text-sm/6' style={{ textAlign: 'left' }}>Created At: {currentUser?.metadata.creationTime}</p>
-                        <p className='text-sm/6' style={{ textAlign: 'left' }}>Last Signed In: {currentUser?.metadata.lastSignInTime}</p>
+                        <div className='flex justify-center px-2 pt-2'>
+                            <Grid overflow='hidden'>
+                            <GridCol span={6}><Text ta='right'>Name:</Text></GridCol>
+                            <GridCol span={6}><Text>{currentUser?.displayName}</Text></GridCol>
+                            <GridCol span={6}><Text ta='right'>Email:</Text></GridCol>
+                            <GridCol span={6}><Text>{currentUser?.email}</Text></GridCol>
+                            <GridCol span={6}><Text ta='right'>Created At:</Text></GridCol>
+                            <GridCol span={6}><Text>{currentUser?.metadata.creationTime}</Text></GridCol>
+                            <GridCol span={6}><Text ta='right'>Last Signed In:</Text></GridCol>
+                            <GridCol span={6}><Text>{currentUser?.metadata.lastSignInTime}</Text></GridCol>
+                            </Grid>
                         </div>
                     </Tabs.Panel>
                     <Tabs.Panel value='allUsers'>
-                        <div className='mx-6 my-4'>
-                        <ul className='gap-2'>
-                        {allUsers.map((user: string, index: number) => (
-                            <li key={index}
-                            className='relative rounded-md p-3 text-sm/6'>
-                            {user}
-                            </li>
-                        ))}
-                        </ul>
+                        <div className='flex justify-center pt-2'>
+                            <List withPadding spacing='sm'>
+                            {allUsers.map((user: string, index: number) => (
+                                <List.Item key={index}>{user}</List.Item>
+                            ))}
+                            </List>
                         </div>
                     </Tabs.Panel>
                 </Tabs>
-                <Group justify='center'>
-                <Button color='red' className='my-4' onClick={handleSignOut}>Sign Out</Button></Group>
-            </div>
+                <Group justify='center'><Button className='mt-16 mb-4' color='red' onClick={handleSignOut}>Sign Out</Button></Group>
+            
         </div>
     );
 };

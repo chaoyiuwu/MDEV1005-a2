@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Button, Group, TextInput } from '@mantine/core'
-import { useNavigate } from 'react-router'
+import { useState } from 'react'
+import { Button, Group, TextInput, Checkbox, Stack, Text } from '@mantine/core'
+import { useNavigate, Link } from 'react-router'
 import { firebaseSignUp } from '../../firebase/FirebaseService'
 
 const SignUp = () => {
@@ -29,37 +29,41 @@ const SignUp = () => {
         <div className='flex flex-col m-auto w-full items-center'>
             <h1 className='my-4'>Sign Up</h1>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            {success && <p style={{ color: 'green' }}>Sign-up successful!</p>}
-            <form onSubmit={handleSignUp}
-            className='w-64 items-center'>
-                <TextInput
-                    withAsterisk
-                    label="Display Name"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-                <TextInput
-                    label="Email"
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <TextInput
-                    label="Password"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+            {success && <p style={{ color: 'green' }}>Sign-up successful!</p>}        
+            <form onSubmit={handleSignUp} className='items-center'>
+                <Stack gap='mid'>
+                    <TextInput
+                        withAsterisk
+                        label="Display Name"
+                        placeholder="Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
                     />
-                <Group justify="center">
-                <Button className='my-4' variant="filled" color="red" type="submit"> Sign Up</Button>
-                </Group>
+                    <TextInput
+                        label="Email"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <TextInput
+                        label="Password"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        />
+                    <Checkbox defaultChecked label="I agree to sell my soul and my firstborn child"/>
+                    <Group justify="center">
+                        <Button variant="filled" color="red" type="submit"> Sign Up</Button>
+                    </Group>
+                </Stack>
             </form>
+            <Link to='/login' className='my-4'><Text c='dimmed' size='sm'>Have an account? Log In instead</Text></Link>
+
         </div>
     </div>
   )

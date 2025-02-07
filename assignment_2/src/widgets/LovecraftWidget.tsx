@@ -40,10 +40,12 @@ const LovecraftWidget = () => {
     return (
         <div className='flex flex-col items-center'>
             <p className="text-base/7 font-semibold my-2">API 3: A Random Lovecraft Quote</p>
+            <div className='w-full md:w-md'>
                 <Blockquote color="gray" cite={`- ${response?.data[0].book.name} (${response?.data[0].book.year})`} mt="xl">
                     {response?.data[0].sentence}
                 </Blockquote>
                 <Button className='my-2' color='green' variant='subtle' onClick={refreshQuote}>Get Another Quote!</Button>
+            </div>
         </div>
     )
 }
