@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Button, Group, Tabs } from '@mantine/core'
+import { Button, Group, Stack, Tabs } from '@mantine/core'
 import { User } from 'firebase/auth'
 import { firebaseSignOut, firebaseGetAllUsers } from '../../firebase/FirebaseService'
 import { useAuth } from '../../contexts/useAuth'
 import CatWidget from '../../widgets/CatWidget'
+import BookWidget from '../../widgets/BookWidget'
 
 const handleSignOut = () => {
     SignOut()
@@ -44,7 +45,10 @@ const Dashboard = () => {
                         <Tabs.Tab value='allUsers'>All Users</Tabs.Tab>
                     </Tabs.List>
                     <Tabs.Panel value='widgets'>
-                        <CatWidget/>
+                        <Stack>
+                            <CatWidget/>
+                            <BookWidget/>
+                        </Stack>
                     </Tabs.Panel>
                     <Tabs.Panel value='userProfile'>
                         <div className='mx-6 my-4'>
