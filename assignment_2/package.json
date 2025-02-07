@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
     "@mantine/carousel": "^7.16.2",
     "@mantine/core": "^7.16.2",
     "@mantine/dates": "^7.16.2",
