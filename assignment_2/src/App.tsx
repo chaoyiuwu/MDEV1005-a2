@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css'
-import './App.css'
+//import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import AuthProvider from './contexts/AuthProvider.tsx'
 import Dashboard from './pages/Dashboard/dashboard'
