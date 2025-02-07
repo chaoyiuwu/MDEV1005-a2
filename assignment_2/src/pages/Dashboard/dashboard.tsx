@@ -5,6 +5,7 @@ import { firebaseSignOut, firebaseGetAllUsers } from '../../firebase/FirebaseSer
 import { useAuth } from '../../contexts/useAuth'
 import CatWidget from '../../widgets/CatWidget'
 import BookWidget from '../../widgets/BookWidget'
+import LovecraftWidget from '../../widgets/LovecraftWidget'
 
 const handleSignOut = () => {
     SignOut()
@@ -48,6 +49,7 @@ const Dashboard = () => {
                         <Stack>
                             <CatWidget/>
                             <BookWidget/>
+                            <LovecraftWidget/>
                         </Stack>
                     </Tabs.Panel>
                     <Tabs.Panel value='userProfile'>
@@ -72,7 +74,7 @@ const Dashboard = () => {
                     </Tabs.Panel>
                 </Tabs>
                 <Group justify='center'>
-                <Button color='red' className='my-4' onClick={handleSignOut} >Sign Out</Button></Group>
+                <Button color='red' className='my-4' onClick={handleSignOut}>Sign Out</Button></Group>
             </div>
         </div>
     );
