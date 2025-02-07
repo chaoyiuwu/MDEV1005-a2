@@ -44,8 +44,8 @@ const LovecraftWidget = () => {
                 <Blockquote color="gray" cite={`- ${response?.data[0].book.name} (${response?.data[0].book.year})`} mt="xl">
                     {response?.data[0].sentence}
                 </Blockquote>
-                <Button className='my-2' color='green' variant='subtle' onClick={refreshQuote}>Get Another Quote!</Button>
             </div>
+            <Button className='my-2' color='green' variant='subtle' onClick={refreshQuote}>Get Another Quote!</Button>
         </div>
     )
 }
