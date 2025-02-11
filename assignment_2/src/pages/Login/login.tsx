@@ -4,24 +4,25 @@ import { useNavigate, Link } from 'react-router'
 import { firebaseSignIn } from '../../firebase/FirebaseService'
 
 const Login = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate() // using React Router's useNavigate hook to navigate the user without further input after a successful log in
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [success, setSuccess] = useState(false)
 
+    // an asynchronous function that interacts with firebase's functionality
     const handleLogin = async (e: any) => {
-    e.preventDefault()
-    setError('') // Reset error state
-    setSuccess(false) // Reset success state
+        e.preventDefault()
+        setError('')
+        setSuccess(false)
 
-    try {
-        await firebaseSignIn({ email, password})
-        setSuccess(true) // Set success state
-        navigate("/dashboard")
-    } catch (error: any) {
-        setError(error.message) // Set error message
-    }
+        try {
+            await firebaseSignIn({ email, password})
+            setSuccess(true)
+            navigate("/dashboard")
+        } catch (error: any) {
+            setError(error.message) // error is displayed in red text on page
+        }
   }
 
     return (

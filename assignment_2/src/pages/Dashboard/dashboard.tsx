@@ -7,6 +7,7 @@ import CatWidget from '../../widgets/CatWidget'
 import BookWidget from '../../widgets/BookWidget'
 import LovecraftWidget from '../../widgets/LovecraftWidget'
 
+// a non-async function that calls the async SignOut function so that the SignOut button onClick works
 const handleSignOut = () => {
     SignOut()
 }
@@ -19,8 +20,8 @@ const SignOut = async () => {
 
 
 const Dashboard = () => {
-    const [allUsers, setAllUsers] = useState<string[]>([])
     const auth = useAuth()
+    const [allUsers, setAllUsers] = useState<string[]>([])
     const [currentUser, setCurrentUser] = useState<User | null>(auth.user)
     
     useEffect(() => {
@@ -45,7 +46,7 @@ const Dashboard = () => {
                         <Tabs.Tab value='allUsers'>All Users</Tabs.Tab>
                     </Tabs.List>
                     <Tabs.Panel value='widgets'>
-                        <Stack>
+                        <Stack gap='md'>
                             <CatWidget/>
                             <BookWidget/>
                             <LovecraftWidget/>

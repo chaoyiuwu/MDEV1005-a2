@@ -26,12 +26,12 @@ const NotFound = () => {
     return(
         <div className='flex h-screen'>
             <div className='m-auto'>
-        <Stack gap='md'>
-            <Text size='lg' ta='center'>{phrase}</Text>
-            <Link to='/dashboard'><Text size='sm' ta='center'>Return to Dashboard (don't think you can do it if you weren't logged in)</Text></Link>
-            <Link to='/'><Text size='sm' ta='center'>Return to Landing</Text></Link>
-        </Stack>
-        </div>
+                <Stack gap='md'>
+                    <Text size='lg' ta='center'>{phrase}</Text>
+                    <Link to='/dashboard'><Text size='sm' ta='center'>Return to Dashboard (don't think you can do it if you weren't logged in)</Text></Link>
+                    <Link to='/'><Text size='sm' ta='center'>Return to Landing</Text></Link>
+                </Stack>
+            </div>
         </div>
     )
 }

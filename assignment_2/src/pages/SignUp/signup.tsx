@@ -4,26 +4,28 @@ import { useNavigate, Link } from 'react-router'
 import { firebaseSignUp } from '../../firebase/FirebaseService'
 
 const SignUp = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate() // using React Router's useNavigate hook to navigate the user without further input after a successful sign up
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [success, setSuccess] = useState(false)
 
+    // an asynchronous function that interacts with firebase's functionality
     const handleSignUp = async (e: any) => {
         e.preventDefault()
-        setError('') // Reset error state
-        setSuccess(false) // Reset success state
+        setError('')
+        setSuccess(false)
 
         try {
             await firebaseSignUp({ email, password, displayName: name })
-            setSuccess(true) // Set success state
+            setSuccess(true)
             navigate("/dashboard")
         } catch (error: any) {
-            setError(error.message) // Set error message
+            setError(error.message) // error is displayed in red text on page
         }
     }
+
   return (
     <div className='flex h-screen'>
         <div className='flex flex-col m-auto w-full items-center'>
@@ -41,6 +43,7 @@ const SignUp = () => {
                         required
                     />
                     <TextInput
+                        withAsterisk
                         label="Email"
                         type="email"
                         placeholder="Email"
@@ -49,6 +52,7 @@ const SignUp = () => {
                         required
                     />
                     <TextInput
+                        withAsterisk
                         label="Password"
                         type="password"
                         placeholder="Password"
@@ -62,7 +66,7 @@ const SignUp = () => {
                     </Group>
                 </Stack>
             </form>
-            <Link to='/login' className='my-4'><Text c='dimmed' size='sm'>Have an account? Log In instead</Text></Link>
+            <Link to='/login' className='my-4'><Text c='dimmed' size='sm'>Have an account? Log In Instead</Text></Link>
 
         </div>
     </div>

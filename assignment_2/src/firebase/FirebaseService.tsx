@@ -11,31 +11,31 @@ export const firebaseSignIn = async ({ email, password }: LoginFormValues) => {
     await signInWithEmailAndPassword(firebaseAuth, email, password)
 };
 
-// save an user 
+// save an user in the firestore database
 const firebaseSaveUser = async (name: string, email: string) => {
-    try {
-        const docRef = await addDoc(collection(firebaseDb, "users"), {
-            userName: name,
-            userEmail: email
-        })
-        console.log("Document written with ID: ", docRef.id)
-    } catch (e) {
-        console.error("Error adding document: ", e)
-    }
+    const docRef = await addDoc(collection(firebaseDb, "users"), {
+        userName: name,
+        userEmail: email
+    })
+    console.log("Document written with ID: ", docRef.id)
 }
 
 //Sign up functionality
 export const firebaseSignUp = async ({ email, password, displayName }: UserFormValues) => {
-    const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password)
-    const user = userCredential.user
+    try {
+        const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password)
+        const user = userCredential.user
 
-    // save to users db for reading later
-    await firebaseSaveUser(displayName, email)
+        // save to users db for reading later
+        await firebaseSaveUser(displayName, email)
 
-    // Update the display name
-    await updateProfile(user, {
-      displayName: displayName,
-    })
+        // Update the display name
+        await updateProfile(user, {
+        displayName: displayName,
+        })
+    }catch(error){
+        throw error
+    }
 }
 
 //Sign out functionality
@@ -43,7 +43,7 @@ export const firebaseSignOut = async () => {
     await signOut(firebaseAuth)
 }
 
-// get all users
+// get all users from the firestore database
 export const firebaseGetAllUsers = async() : Promise<string[]> => {
     let allUsers :string[] = []
     const querySnapshot = await getDocs(collection(firebaseDb, "users"));

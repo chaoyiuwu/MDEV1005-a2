@@ -3,6 +3,7 @@ import { User, onAuthStateChanged } from 'firebase/auth';
 import { firebaseAuth } from "../firebase/BaseConfig";
 import AuthContext from "./AuthContext";
 
+// a component to wrap the app in so that the rest of the app can access the auth state
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     useEffect(() => {

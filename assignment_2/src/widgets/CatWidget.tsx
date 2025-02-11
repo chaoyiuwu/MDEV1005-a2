@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Image, Button } from '@mantine/core'
 
+const headers = {
+    "Content-Type": "application/json",
+    "x-api-key": "live_XDMtmtlrQanVnOXaPD5NSBDjRfAsqm9rYPPxxb5yFMTSKlYLbO30JEVJ9QXmkro7"
+}
+const requestHeaders = new Headers(headers)
+
 const CatWidget = () => {
-    const [imageURL, setImageURL] = useState('')
+    const [imageURL, setImageURL]= useState<string|null>(null)
     const fetchCatImage = async () => {
-        fetch('https://api.thecatapi.com/v1/images/search')
+        fetch('https://api.thecatapi.com/v1/images/search', {
+            method: 'GET',
+            headers: requestHeaders
+        })
             .then(response => response.json())
             .then(data => {
                 setImageURL(data[0].url)

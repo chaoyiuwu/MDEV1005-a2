@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react"
 import { Blockquote, Button } from "@mantine/core"
 
+interface ApiResponse {
+  data: SentenceData[]
+}
+interface SentenceData {
+  id: string
+  sentence: string
+  book: Book
+}
 interface Book {
   id: string
   name: string
   year: string
 }
 
-interface SentenceData {
-  id: string
-  sentence: string
-  book: Book
-}
-
-interface ApiResponse {
-  data: SentenceData[]
-}
 const LovecraftWidget = () => {
     const [response, setResponse] = useState<ApiResponse>()
     const fetchQuote = async () => {
